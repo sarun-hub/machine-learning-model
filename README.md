@@ -1,2 +1,2 @@
 # machine learning model
-# Archive of created model
+# this repo is just archive of created model
