@@ -1,1 +1,2 @@
-# multinomial-logistic-regression
+# machine learning model
+# Archive of created model
