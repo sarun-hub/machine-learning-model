@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
+# ref:https://medium.com/analytics-vidhya/multiple-linear-regression-from-scratch-using-python-db9368859f
 class Multiple_LinReg():
     def __init__(self,learning_rate= 0.01, epochs = 100):
         self.learning_rate = learning_rate
@@ -30,9 +31,10 @@ class Multiple_LinReg():
         self.printResult()
         print("MSE is" ,self.calculateError(pred_y))
     
+    # predict value
     def predict(self,X):
         z = np.dot(X,self.weights)
-        print(z)
+        return z
     
     def illustrateResult(self):
         NotImplementedError
@@ -56,14 +58,15 @@ def print_progessbar(total,current,barsize = 60):
 if __name__=="__main__":
     file_path = "dataFile/for_presentation20240202/testing_datacollection.csv"
     df = pd.read_csv(file_path)
-    print(df["followingAcceleration"].head())
     y = df["followingAcceleration"].to_numpy()
     X = df[["distance","precedingAcceleration","precedingSpeed","followingSpeed"]].to_numpy()
-    obj = Multiple_LinReg(learning_rate= 0.00001,epochs=1000000)
+    obj = Multiple_LinReg(learning_rate= 0.00001,epochs=100000)
     obj.fit(X,y)
 
+    # for checking efficiency
     reg = LinearRegression().fit(X, y)
     print(reg.coef_)
+    print(mean_squared_error(y,obj.predict(X)))
     print(mean_squared_error(y,reg.predict(X)))
 
 
