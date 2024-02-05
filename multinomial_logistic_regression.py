@@ -93,8 +93,8 @@ class Multinomial_Logistic_Regression():
     def predict(self,X):
         z = np.dot(X,self.weights)
         weight_list = self.weights.T.tolist()
-        # result = pd.DataFrame(weight_list,columns=["Class 1","Class 2","Class 3"],index=['Constant','distance','speed','followingspeed'])
-        # print(result)
+        result = pd.DataFrame(weight_list,columns=["Class 1","Class 2","Class 3"],index=['distance','speed','followingspeed'])
+        print(result)
         Oi = self.soft_max(z)
         lis = []
         count = 0
